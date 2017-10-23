@@ -1,7 +1,19 @@
+'use strict';
+
 const URL_REGEX = /(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|mailto:|ftp:\/\/)?[a-z0-9]+([\:\@\-\.\_]{1}[a-z0-9]+)*\.([a-z]{1,13}|[0-9]{1,5})(:[0-9]{1,5})?(\/[^\s]*)?(?:([^!"\#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~\s]))/ig;
 const EMAIL_REGEX = /^(mailto:)?(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 const WITH_SCHEME_REGEX = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|mailto:|ftp:\/\/)/i;
 const WITH_MAILTO_REGEX = /^(mailto:)/i;
+
+const MODULE_NAME = 'linkify';
+let angular;
+
+if (typeof module === 'object' && module.exports) {
+	angular = require('angular');
+	module.exports = MODULE_NAME;
+} else {
+	angular = window.angular;
+}
 
 class LinkifyFilter {
 	makeLinks(input) {
@@ -79,9 +91,9 @@ class Linkify {
 	}
 }
 
-angular.module('linkify', []);
+angular.module(MODULE_NAME, []);
 
-angular.module('linkify')
+angular.module(MODULE_NAME)
 	.filter('linkify', [LinkifyFilter.filter])
 	.service('linkify', ['$filter', LinkifyService])
 	.directive('linkify', ['linkify', '$timeout', Linkify]);
