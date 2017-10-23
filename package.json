@@ -1,0 +1,15 @@
+{
+  "name": "ng-linkify",
+  "version": "1.0.0",
+  "description": "Parse links in text and wrap with anchor tags",
+  "main": "ng-linkify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "linkify",
+    "angular"
+  ],
+  "author": "Rory Payne <rorydpayne@gmail.com>",
+  "license": "ISC"
+}
