@@ -79,7 +79,9 @@ class Linkify {
 	}
 }
 
-angular.module('Linkify', [])
+angular.module('linkify', []);
+
+angular.module('linkify')
 	.filter('linkify', [LinkifyFilter.filter])
 	.service('linkify', ['$filter', LinkifyService])
 	.directive('linkify', ['linkify', '$timeout', Linkify]);
